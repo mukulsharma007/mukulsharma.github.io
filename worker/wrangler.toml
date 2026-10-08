@@ -1,0 +1,16 @@
+# Cloudflare Worker config for the optional "Ask my CV" LLM step.
+# Deploy from this folder with:  npx wrangler deploy
+name = "ask-mukul"
+main = "ask-worker.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+# "openai" works with any OpenAI-compatible API (OpenAI, Groq, Mistral, OpenRouter, ...)
+# "anthropic" uses the Claude API
+PROVIDER = "openai"
+API_BASE = "https://api.openai.com/v1"
+MODEL = "PUT-A-MODEL-NAME-HERE"
+# Add http://localhost:8000 while testing locally, separated by a comma
+ALLOWED_ORIGINS = "https://mukulsharma007.github.io"
+
+# The API key is a secret, set it with:  npx wrangler secret put API_KEY
